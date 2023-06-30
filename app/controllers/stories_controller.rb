@@ -15,6 +15,7 @@ class StoriesController < ApplicationController
       })
 
     @story = response.dig("choices", 0, "message", "content")
+    @story = @story.gsub("\n\n", "\n")
 
     title_response = client.chat(
       parameters: {
