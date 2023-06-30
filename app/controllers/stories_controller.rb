@@ -25,11 +25,29 @@ class StoriesController < ApplicationController
       })
     title = title_response.dig("choices", 0, "message", "content")
 
+    readable_story_response = client.chat(
+      parameters: {
+        model: "gpt-3.5-turbo", # Required.
+        messages: [{ role: "user", content: "Create a shorter user readable story frame (2 sentences) for each of these 6 story frame generative prompts. It should still read like a good fantasy story and not just a summary: #{@story}"}], # Required.
+        temperature: 0.7,
+      })
+
+    readable_story = readable_story_response.dig("choices", 0, "message", "content")
+
     @split_story = @story.split("\n")
     line = 0
     numbering = 1
     @split_story.each do |i|
       @split_story[line] = i.gsub("#{numbering}. ", "")
+      line += 1
+      numbering+= 1
+    end
+
+    @split_readable_story = readable_story.split("\n")
+    line = 0
+    numbering = 1
+    @split_readable_story.each do |i|
+      @split_readable_story[line] = i.gsub("#{numbering}. ", "")
       line += 1
       numbering+= 1
     end
@@ -47,7 +65,7 @@ class StoriesController < ApplicationController
     #                "https://img.donaukurier.de/ezplatform/images/2/4/0/9/19509042-5-ger-DE/urn:newsml:dpa.com:20090101:211012-99-571746-v2-s2048.jpeg"]
     @dalle_urls = []
     (0..5).each do |i|
-      prompt = "#{@split_story[i]} expressive oil painting in the style of matisse."
+      prompt = "#{@split_story[i]} expressive oil painting."
       puts prompt
       picture_response = client.images.generate(parameters: { prompt: prompt, size: "256x256" })
       @dalle_urls.push(picture_response.dig("data", 0, "url"))
@@ -57,7 +75,7 @@ class StoriesController < ApplicationController
     #@dalle_url = "https://www.hundeo.com/wp-content/uploads/2019/01/Dackel.jpg"
     @dalle_url = @dalle_urls[0]
 
-    dream = Dream.new(title: title, story:@split_story.to_json, links: @dalle_urls.to_json)
+    dream = Dream.new(title: title, story:@split_readable_story.to_json, links: @dalle_urls.to_json)
     dream.save
   end
 
