@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
       parameters: {
         model: "gpt-3.5-turbo", # Required.
         messages: [{ role: "user", content: "Imagine you are telling a fantasy visual story with 6 frames that has a start and an end. Can you give these 6 frames as 6 gener
-        ative image prompts? Be detailed when it comes to visuals such as describing a person and be coherent over the 6 frames. Dont make it a numbered list."}], # Required.
+        ative image prompts? Be detailed when it comes to visuals such as describing a person and be coherent over the 6 frames. Dont use the word Frame: at the beggining of the description of a frame. Just give me these frames and nothing else."}], # Required.
         temperature: 0.7,
       })
 
@@ -47,7 +47,9 @@ class StoriesController < ApplicationController
     #                "https://img.donaukurier.de/ezplatform/images/2/4/0/9/19509042-5-ger-DE/urn:newsml:dpa.com:20090101:211012-99-571746-v2-s2048.jpeg"]
     @dalle_urls = []
     (0..5).each do |i|
-      picture_response = client.images.generate(parameters: { prompt: "#{@split_story[i]}. expressive oil painting", size: "256x256" })
+      prompt = "#{@split_story[i]} expressive oil painting in the style of matisse."
+      puts prompt
+      picture_response = client.images.generate(parameters: { prompt: prompt, size: "256x256" })
       @dalle_urls.push(picture_response.dig("data", 0, "url"))
       puts @dalle_urls
     end
