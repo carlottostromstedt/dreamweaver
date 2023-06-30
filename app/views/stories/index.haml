@@ -1,3 +1,6 @@
-.h1 DREAMWEAVER
+#title-container
+  .h1.welcome-title Welcome to a new kind of story telling
+  .button-container
+    = button_to "Storytime", storytime_show_path(), method: :get, class: "btn btn-primary btn-large"
+    = button_to "Redream", dreams_path(), method: :get, class: "btn btn-primary btn-large"
 
-= button_to "storytime", storytime_show_path(), method: :get

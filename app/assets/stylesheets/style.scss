@@ -1,0 +1,39 @@
+.picture{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+body{
+  background-color: black;
+  color: white;
+}
+
+#title-container{
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.button-container{
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+#dreams-container{
+  display: flex;
+}
+
+.dream-card{
+  border: #2b2f32;
+}
+
+.dream-body{
+  height: 450px;
+  background-color: #2b2f32;
+  text-align: center;
+}

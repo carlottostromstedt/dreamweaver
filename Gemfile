@@ -77,3 +77,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "devise", "~> 4.9"
+
+gem "activeadmin", "~> 2.14"
+
+gem "sass-rails", "~> 6.0"

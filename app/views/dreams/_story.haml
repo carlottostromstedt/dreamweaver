@@ -1,2 +1,12 @@
-.p
-  = prompt.story
+%div.picture.mt-5
+  %img#test{alt: "dalle pic", src: "#{@dalle_url}", style: "width: 700px; height: 700px"}/
+  .p.my-4#story-text
+    = split_story[0]
+  %button.btn.btn-primary#next-button Next Frame
+  - split_story.each do |i|
+    .p.text-black.line-text
+      = i
+  - dalle_urls.each do |i|
+    .p.text-black.picture-links
+      = i
+

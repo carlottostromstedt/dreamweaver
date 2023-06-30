@@ -1,5 +1,6 @@
 class DreamsController < ApplicationController
   before_action :set_dream, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /dreams or /dreams.json
   def index
@@ -8,14 +9,11 @@ class DreamsController < ApplicationController
 
   # GET /dreams/1 or /dreams/1.json
   def show
-    response = client.chat(
-      parameters: {
-        model: "gpt-3.5-turbo", # Required.
-        messages: [{ role: "user", content: "Hello!"}], # Required.
-        temperature: 0.7,
-      })
-    puts response.dig("choices", 0, "message", "content")
-    # => "Hello! How may I assist you today?"
+    id = params[:id]
+    dream = Dream.where(id: id).first
+    @split_story = JSON.parse(dream.story)
+    @dalle_url = JSON.parse(dream.links)[0]
+    @dalle_urls = JSON.parse(dream.links)
   end
 
   # GET /dreams/new
