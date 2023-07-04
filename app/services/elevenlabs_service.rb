@@ -1,7 +1,7 @@
 require 'net/http'
 require 'json'
 
-class ElevenLabsService
+class ElevenlabsService < ApplicationService
   API_BASE_URL = 'https://api.elevenlabs.io/v1'
 
   def initialize(api_key)
