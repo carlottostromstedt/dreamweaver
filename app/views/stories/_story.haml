@@ -1,13 +1,17 @@
-%div.picture.mt-5
-  %img#test{alt: "dalle pic", src: "#{@dalle_url}", style: "width: 700px; height: 700px"}/
+%div.picture.mt-3
+  %img#test{alt: "dalle pic", src: url_for(@dream.story_frames.first.image), style: "width: 700px; height: 700px"}/
   .p.my-4#story-text
     = split_story[0]
   %button.btn.btn-primary.dream-buttons#next-button Next Frame
+  %audio.mt-2#audio-player{controls: "", autoplay: "autoplay"}
+    %source#audio{src: url_for(@dream.story_frames.first.audio), type: "audio/mpeg"}
   .debug-container
     - split_story.each do |i|
       .p.line-text
         = i
-    - dalle_urls.each do |i|
+    - @dream.story_frames.each do |i|
       .p.picture-links
-        = i
-
+        = url_for(i.image)
+    - @dream.story_frames.each do |i|
+      .p.audio-links
+        = url_for(i.audio)
