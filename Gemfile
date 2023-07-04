@@ -35,6 +35,7 @@ gem "redis", "~> 4.0"
 
 gem "haml"
 
+gem "aws-sdk-s3"
 gem "ruby-openai"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
