@@ -63,6 +63,14 @@ class StoriesController < ApplicationController
     #                "https://www.petbook.de/data/uploads/2022/09/gettyimages-1254074121-1040x690.jpg",
     #                "https://www.santevet.de/uploads/images/de_DE/rassen/shutterstock_1188204901.jpeg",
     #                "https://img.donaukurier.de/ezplatform/images/2/4/0/9/19509042-5-ger-DE/urn:newsml:dpa.com:20090101:211012-99-571746-v2-s2048.jpeg"]
+    # Example usage:
+    api_key = 'YOUR_API_KEY'
+    elevenlabs_service = ElevenLabsService.new(api_key)
+
+    voice_id = '21m00Tcm4TlvDq8ikWAM'
+    text = @split_readable_story[1]
+    elevenlabs_service.text_to_speech(voice_id, text)
+
     @dalle_urls = []
     (0..5).each do |i|
       prompt = "#{@split_story[i]} expressive oil painting."

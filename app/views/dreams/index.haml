@@ -1,15 +1,18 @@
-.h1.text-center.my-3 Redream
-.h2.text-center.my-3 Redream your own dreams or see what others have dreamt
+.background-container
+  = render partial: "navbar"
 
-.container-fluid
-  .row
-    - @dreams.each do |i|
-      .col-12.col-md-6.col-lg-4.col-xl-3
-        .card.my-5.dream-card
-          .card-header.bg-dark.text-white
-            - unless i.title.nil?
-              = i.title
-          .card-body.dream-body
-            - unless i.links.nil?
-              %img#test{alt: "dalle pic", src: "#{JSON.parse(i.links)[0]}", style: "width: 350px; height: 350px"}/
-            = button_to "redream this", dream_path(i.id), method: :get, class: "btn btn-primary my-3"
+  .h1.text-center.my-3 Redream
+  .h2.text-center.my-3 Redream your own dreams or see what others have dreamt
+
+  .container-fluid
+    .row
+      - @dreams.each do |i|
+        .col-12.col-md-6.col-lg-4.col-xl-3
+          .card.my-5.dream-card
+            .card-header.bg-dark.text-white
+              - unless i.title.nil?
+                = i.title
+            .card-body.dream-body
+              - unless i.links.nil?
+                %img#test{alt: "dalle pic", src: "#{JSON.parse(i.links)[0]}", style: "width: 350px; height: 350px"}/
+              = button_to "redream this", dream_path(i.id), method: :get, class: "btn btn-primary my-3 dream-buttons"

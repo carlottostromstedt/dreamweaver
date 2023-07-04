@@ -6,19 +6,12 @@
     %meta{content: "width=device-width,initial-scale=1", name: "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
+    :css
+      @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
+    %link{href: "https://use.typekit.net/ydu3jtc.css", rel: "stylesheet"}/
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
 
   %body
-    - if user_signed_in?
-      %nav.navbar.navbar-expand-lg.navbar-light.bg-dark
-        %a.mx-3.text-white.navbar-brand{href: "#"} Dreamweaver
-        %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", type: "button"}
-          %span.navbar-toggler-icon
-        #navbarSupportedContent.collapse.navbar-collapse
-          %ul.navbar-nav.mr-auto
-            %li.nav-item.active
-              = link_to "Home", root_path()
-    %p.notice= notice
-    %p.alert= alert
     = yield
+

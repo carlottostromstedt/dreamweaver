@@ -1,6 +1,23 @@
-#title-container
-  .h1.welcome-title Welcome to a new kind of story telling
-  .button-container
-    = button_to "Storytime", storytime_show_path(), method: :get, class: "btn btn-primary btn-large"
-    = button_to "Redream", dreams_path(), method: :get, class: "btn btn-primary btn-large"
+:javascript
+  document.addEventListener('mousemove', function(event) {
+    console.log("mouse move");
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+
+    var mouseXpercentage = Math.round((event.pageX / windowWidth) * 100);
+    var mouseYpercentage = Math.round(((event.pageY -80) / windowHeight) * 100);
+
+    var radialGradient = document.querySelector('.radial-gradient');
+    radialGradient.style.background = 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #fb7900, #2D59FA)';
+  })
+
+#title-container.radial-gradient
+  = render partial: "navbar"
+  %p.notice.py-1= notice
+  %p.alert= alert
+  #inner-title-container
+    .h1.welcome-title Welcome to a new kind of story telling
+    .button-container
+      = button_to "Storytime", storytime_show_path(), method: :get, class: "btn btn-primary btn-large main-buttons"
+      = button_to "Redream", dreams_path(), method: :get, class: "btn btn-primary btn-large main-buttons"
 

@@ -1,0 +1,10 @@
+- if user_signed_in?
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-transparent
+    %a.navbar-brand.mx-5{href: "/"}= image_tag('dreamweaver_logo_transparent.png', class: 'logo',style: "width:50px")
+    %p.navbar-brand.text-white.dreamweaver-logo.mt-3 Dreamweaver
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", type: "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        %li.nav-item.active.mx-5
+          = link_to "Home", root_path(), class: "top-nav-links"

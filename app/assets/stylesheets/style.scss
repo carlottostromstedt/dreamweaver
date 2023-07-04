@@ -6,16 +6,68 @@
 }
 
 body{
-  background-color: black;
+  background-color: #212529;
   color: white;
+  font-family: "work-sans", sans-serif;
+}
+
+.top-nav-links{
+  font-family: "work-sans", sans-serif;
+  text-decoration: none !important;
+  color: white;
+  font-size: 28px;
+}
+
+.dreamweaver-logo{
+  font-size: 30px;
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 #title-container{
-  height: 800px;
+  min-height: 100vh;
+}
+
+#inner-title-container{
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   text-align: center;
+}
+
+#title-container::after {
+  content: "";
+}
+
+.main-buttons{
+  font-family: "work-sans", sans-serif;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  font-size: 36px;
+  background-color: rgba(0,0,0,0.2);
+  border-color: #ffffff !important;
+  border-width: 3px;
+}
+
+.dream-buttons{
+  background-color: rgba(0,0,0,0.2);
+  border-color: #ffffff !important;
+}
+
+.dream-buttons:hover{
+  background-color: rgba(0,0,0,0.4);
+}
+
+.main-buttons:hover{
+  background-color: rgba(0,0,0,0.4);
+}
+
+.welcome-title{
+  font-family: "work-sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .button-container{
@@ -29,6 +81,7 @@ body{
 }
 
 .dream-card{
+  height: 600px;
   border: #2b2f32;
 }
 
@@ -37,3 +90,65 @@ body{
   background-color: #2b2f32;
   text-align: center;
 }
+
+.welcome-title{
+  font-size: 70px;
+}
+
+.milky-glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: milky-glass-animation 2s ease infinite;
+}
+
+@keyframes milky-glass-animation {
+  0% {
+    background: linear-gradient(45deg, #fb7900, #2D59FA);
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+    background-blend-mode: difference;
+  }
+  50% {
+    background: linear-gradient(45deg, #fb7900, #2D59FA);
+    background-size: 400% 400%;
+    background-position: 100% 50%;
+    background-blend-mode: difference;
+  }
+  100% {
+    background: linear-gradient(45deg, #fb7900, #2D59FA);
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+    background-blend-mode: difference;
+  }
+}
+
+.background-container{
+  animation: milky-glass-animation 25s ease infinite;
+  min-height: 100vh
+}
+
+.radial-gradient {
+  height:100%;
+  width:100%;
+
+  /*Fallback if gradeints don't work */
+  background: #9b59b6;
+  /*Linear gradient... */
+  background:
+          radial-gradient(
+                          at center, #fb7900, #2D59FA
+          );
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
