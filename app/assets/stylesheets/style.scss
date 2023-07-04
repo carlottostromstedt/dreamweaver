@@ -24,15 +24,17 @@ body{
 }
 
 #title-container{
-  min-height: 100vh;
+  min-height: 80vh;
+  min-width: 100vw;
 }
 
 #inner-title-container{
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   text-align: center;
+  width: 100vw;
 }
 
 #title-container::after {
