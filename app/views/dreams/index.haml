@@ -14,5 +14,5 @@
                 = i.title
             .card-body.dream-body
               - unless i.links.nil?
-                %img#test{alt: "dalle pic", src: "#{JSON.parse(i.links)[0]}", style: "width: 350px; height: 350px"}/
+                %img.card-picture#test{alt: "dalle pic", src: "#{JSON.parse(i.links)[0]}"}/
               = button_to "redream this", dream_path(i.id), method: :get, class: "btn btn-primary my-3 dream-buttons"

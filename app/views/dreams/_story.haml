@@ -3,10 +3,11 @@
   .p.my-4#story-text
     = split_story[0]
   %button.btn.btn-primary.dream-buttons#next-button Next Frame
-  - split_story.each do |i|
-    .p.text-black.line-text
-      = i
-  - dalle_urls.each do |i|
-    .p.text-black.picture-links
-      = i
+  .debug-container
+    - split_story.each do |i|
+      .p.line-text
+        = i
+    - dalle_urls.each do |i|
+      .p.picture-links
+        = i
 

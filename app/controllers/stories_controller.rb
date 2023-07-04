@@ -57,12 +57,12 @@ class StoriesController < ApplicationController
     #                 "A sudden storm clouds the sky and rain starts pouring down. The woman takes shelter under a large rock, looking worried.",
     #                 "The rain stops, and the woman emerges from under the rock to see a rainbow stretching across the valley below.",
     #                 "The woman reaches the peak of the mountain, arms raised in triumph, as the sun sets behind her, casting a golden glow over the landscape."]
-    # @dalle_urls = ["https://www.hundeo.com/wp-content/uploads/2019/01/Dackel.jpg",
-    #                "https://www.zooroyal.de/magazin/wp-content/uploads/2017/03/dackel-hunderassen-760x560.jpg",
-    #                "https://www.zooplus.ch/magazin/wp-content/uploads/2017/03/fotolia_126825120.jpg",
-    #                "https://www.petbook.de/data/uploads/2022/09/gettyimages-1254074121-1040x690.jpg",
-    #                "https://www.santevet.de/uploads/images/de_DE/rassen/shutterstock_1188204901.jpeg",
-    #                "https://img.donaukurier.de/ezplatform/images/2/4/0/9/19509042-5-ger-DE/urn:newsml:dpa.com:20090101:211012-99-571746-v2-s2048.jpeg"]
+    @dalle_urls = ["https://www.hundeo.com/wp-content/uploads/2019/01/Dackel.jpg",
+                   "https://www.zooroyal.de/magazin/wp-content/uploads/2017/03/dackel-hunderassen-760x560.jpg",
+                   "https://www.zooplus.ch/magazin/wp-content/uploads/2017/03/fotolia_126825120.jpg",
+                   "https://www.petbook.de/data/uploads/2022/09/gettyimages-1254074121-1040x690.jpg",
+                   "https://www.santevet.de/uploads/images/de_DE/rassen/shutterstock_1188204901.jpeg",
+                   "https://img.donaukurier.de/ezplatform/images/2/4/0/9/19509042-5-ger-DE/urn:newsml:dpa.com:20090101:211012-99-571746-v2-s2048.jpeg"]
 
     # TODO: Elevenlabs
     # Example usage:
@@ -73,17 +73,17 @@ class StoriesController < ApplicationController
     # text = @split_readable_story[1]
     # elevenlabs_service.text_to_speech(voice_id, text)
 
-    @dalle_urls = []
-    (0..5).each do |i|
-      prompt = "#{@split_story[i]} expressive oil painting."
-      puts prompt
-      picture_response = client.images.generate(parameters: { prompt: prompt, size: "256x256" })
-      @dalle_urls.push(picture_response.dig("data", 0, "url"))
-      puts @dalle_urls
-    end
+    # @dalle_urls = []
+    # (0..5).each do |i|
+    #   prompt = "#{@split_story[i]} expressive oil painting."
+    #   puts prompt
+    #   picture_response = client.images.generate(parameters: { prompt: prompt, size: "256x256" })
+    #   @dalle_urls.push(picture_response.dig("data", 0, "url"))
+    #   puts @dalle_urls
+    # end
     #picture_response = client.images.generate(parameters: { prompt: "#{@split_story[0]}", size: "256x256" })
-    #@dalle_url = "https://www.hundeo.com/wp-content/uploads/2019/01/Dackel.jpg"
-    @dalle_url = @dalle_urls[0]
+    @dalle_url = "https://www.hundeo.com/wp-content/uploads/2019/01/Dackel.jpg"
+    # @dalle_url = @dalle_urls[0]
 
     dream = Dream.new(title: title, story:@split_readable_story.to_json, links: @dalle_urls.to_json)
     dream.save

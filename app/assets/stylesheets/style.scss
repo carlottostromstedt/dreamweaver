@@ -6,6 +6,7 @@
 }
 
 body{
+  height: 100vh;
   background-color: #212529;
   color: white;
   font-family: "work-sans", sans-serif;
@@ -24,7 +25,7 @@ body{
 }
 
 #title-container{
-  min-height: 80vh;
+  height: 100%;
   min-width: 100vw;
 }
 
@@ -34,7 +35,6 @@ body{
   flex-direction: column;
   justify-content: space-evenly;
   text-align: center;
-  width: 100vw;
 }
 
 #title-container::after {
@@ -91,6 +91,10 @@ body{
   height: 450px;
   background-color: #2b2f32;
   text-align: center;
+}
+
+.card-picture{
+  width: 80%;
 }
 
 .welcome-title{
@@ -152,5 +156,10 @@ body{
   100% {
     background-position: 100% 100%;
   }
+}
+
+.debug-container{
+  font-size: 2px;
+  color: rgba(0, 0, 0, 0.0);
 }
 
