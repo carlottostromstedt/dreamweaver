@@ -10,10 +10,10 @@ class DreamsController < ApplicationController
   # GET /dreams/1 or /dreams/1.json
   def show
     id = params[:id]
-    dream = Dream.where(id: id).first
-    @split_story = JSON.parse(dream.story)
-    @dalle_url = JSON.parse(dream.links)[0]
-    @dalle_urls = JSON.parse(dream.links)
+    @dream = Dream.where(id: id).first
+    @split_story = JSON.parse(@dream.story)
+    @dalle_url = JSON.parse(@dream.links)[0]
+    @dalle_urls = JSON.parse(@dream.links)
   end
 
   # GET /dreams/new
