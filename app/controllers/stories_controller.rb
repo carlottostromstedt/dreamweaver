@@ -69,9 +69,7 @@ class StoriesController < ApplicationController
 
     #TODO: Elevenlabs
     #Example usage:
-    #api_key = '9a17f7baaeccf7b39d5568cc91b9b0f6'
     #elevenlabs_service = ElevenlabsService.new(api_key)
-
     #voice_id = 'evhAppD5SVsfQtTIPhyF'
     text = @split_readable_story[1]
     #elevenlabs_service.text_to_speech(voice_id, text)

@@ -6,7 +6,7 @@ class ElevenlabsService < ApplicationService
   HEADERS = {
     "Accept" => "audio/mpeg",
     "Content-Type" => "application/json",
-    "xi-api-key" => "9a17f7baaeccf7b39d5568cc91b9b0f6"
+    "xi-api-key" => Rails.application.secrets.elevenlabs[:api_key]
   }
 
   def self.call(story_frame, text)
