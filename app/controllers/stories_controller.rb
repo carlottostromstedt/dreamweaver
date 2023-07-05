@@ -78,13 +78,13 @@ class StoriesController < ApplicationController
 
     @dalle_urls = []
     (0..5).each do |i|
-       prompt = "#{@split_story[i]} expressive oil painting."
+      prompt = "#{@split_story[i]} expressive oil painting."
        puts prompt
        picture_response = client.images.generate(parameters: { prompt: prompt, size: "256x256" })
        @dalle_urls.push(picture_response.dig("data", 0, "url"))
        puts @dalle_urls
-       end
-    picture_response = client.images.generate(parameters: { prompt: "#{@split_story[0]}", size: "256x256" })
+    end
+    #picture_response = client.images.generate(parameters: { prompt: "#{@split_story[0]}", size: "256x256" })
     @dalle_url = "https://www.hundeo.com/wp-content/uploads/2019/01/Dackel.jpg"
     # @dalle_url = @dalle_urls[0]
 

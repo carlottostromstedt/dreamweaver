@@ -36,6 +36,11 @@ gem "redis", "~> 4.0"
 gem "haml"
 
 gem "aws-sdk-s3"
+
+gem "google-cloud-storage"
+
+gem "azure-storage-blob", "~> 2.0", require: false
+
 gem "ruby-openai"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]

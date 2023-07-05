@@ -13,6 +13,24 @@ amazon:
   region: eu-central-1
   bucket: dreamweaverbucket
 
+google_dev:
+  service: GCS
+  project: dreamweaver
+  credentials: <%= Rails.application.credentials.gcskey.as_json %>
+  bucket: dreamweaverai
+
+google:
+  service: GCS
+  project: dreamweaver
+  credentials: <%= Rails.application.credentials.gcskey.as_json %>
+  bucket: dreamweaverai
+
+azure:
+  service: AzureStorage
+  storage_account_name: <%= Rails.application.credentials.dig(:azure, :storage_account_name) %>
+  storage_access_key: <%= Rails.application.credentials.dig(:azure, :storage_access_key) %>
+  container: <%= Rails.application.credentials.dig(:azure, :container) %>
+
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
