@@ -27,9 +27,9 @@ google:
 
 azure:
   service: AzureStorage
-  storage_account_name: <%= Rails.application.credentials.dig(:azure, :storage_account_name) %>
-  storage_access_key: <%= Rails.application.credentials.dig(:azure, :storage_access_key) %>
-  container: <%= Rails.application.credentials.dig(:azure, :container) %>
+  storage_account_name: <%= ENV['AZURE_STORAGE_ACCOUNT_NAME'] %>
+  storage_access_key: <%= ENV['AZURE_STORAGE_ACCESS_KEY'] %>
+  container: <%= ENV['AZURE_CONTAINER'] %>
 
 
 # Remember not to checkin your GCS keyfile to a repository
