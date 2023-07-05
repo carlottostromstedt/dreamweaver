@@ -76,24 +76,24 @@ class StoriesController < ApplicationController
     text = @split_readable_story[1]
     #elevenlabs_service.text_to_speech(voice_id, text)
 
-    #@dalle_urls = []
-    #(0..5).each do |i|
-      #prompt = "#{@split_story[i]} expressive oil painting."
-       #puts prompt
-       #picture_response = client.images.generate(parameters: { prompt: prompt, size: "256x256" })
-       #@dalle_urls.push(picture_response.dig("data", 0, "url"))
-       #puts @dalle_urls
-       #end
-    #picture_response = client.images.generate(parameters: { prompt: "#{@split_story[0]}", size: "256x256" })
+    @dalle_urls = []
+    (0..5).each do |i|
+       prompt = "#{@split_story[i]} expressive oil painting."
+       puts prompt
+       picture_response = client.images.generate(parameters: { prompt: prompt, size: "256x256" })
+       @dalle_urls.push(picture_response.dig("data", 0, "url"))
+       puts @dalle_urls
+       end
+    picture_response = client.images.generate(parameters: { prompt: "#{@split_story[0]}", size: "256x256" })
     @dalle_url = "https://www.hundeo.com/wp-content/uploads/2019/01/Dackel.jpg"
     # @dalle_url = @dalle_urls[0]
 
     dream = Dream.new(title: title, story:@split_readable_story.to_json, links: @dalle_urls.to_json)
     (0..5).each do |i|
       frame = dream.story_frames.new(frame: @split_readable_story[i])
-      url = 'https://www.hundeo.com/wp-content/uploads/2019/01/Dackel.jpg'
-      #ElevenlabsService.call(frame, @split_readable_story[i])
-      #url = @dalle_urls[i]
+      #url = 'https://www.hundeo.com/wp-content/uploads/2019/01/Dackel.jpg'
+      ElevenlabsService.call(frame, @split_readable_story[i])
+      url = @dalle_urls[i]
       file =  URI.parse(url).open
       frame.image.attach(io: file, filename: "dackel#{i}.jpg")
       frame.save
