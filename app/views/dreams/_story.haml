@@ -4,7 +4,7 @@
     = split_story[0]
   %button.btn.btn-primary.dream-buttons#next-button Next Frame
   %audio.mt-2#audio-player{controls: "", autoplay: "autoplay"}
-    %source#audio{src: url_for(@dream.story_frames.first.audio), type: "audio/mpeg"}
+    %source#audio{src: service_url(@dream.story_frames.first.audio), type: "audio/mpeg"}
   .debug-container
     - split_story.each do |i|
       .p.line-text
