@@ -449,3 +449,8 @@ end
 ```
 
 
+### Resultate
+
+Die zwei Tests sind beide erfolgreich. Wir wissen somit dass unse User-Authentitisierung korrekt funktioniert.
+
+![](app/assets/images/dreamweaver_tests.png)

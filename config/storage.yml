@@ -27,9 +27,9 @@ google:
 
 azure:
   service: AzureStorage
-  storage_account_name: <%= ENV['AZURE_STORAGE_ACCOUNT_NAME'] %>
-  storage_access_key: <%= ENV['AZURE_STORAGE_ACCESS_KEY'] %>
-  container: <%= ENV['AZURE_CONTAINER'] %>
+  storage_account_name: <%= ENV.fetch("AZURE_STORAGE_ACCOUNT_NAME", "dreamweaverai") %>
+  storage_access_key: <%= ENV.fetch("AZURE_STORAGE_ACCESS_KEY", "xIKxFYk/BYZxzjJcE0mj2PifAtdMaHpl4wKiFY01gXEBggi+qMPoK0tk07juc/OdMhJgYQTKJCRH+AStR2q9nA==" ) %>
+  container: <%= ENV.fetch("AZURE_CONTAINER", "dreamweavercontainer") %>
 
 
 # Remember not to checkin your GCS keyfile to a repository
