@@ -52,6 +52,7 @@ gem "dotenv"
 # linting
 gem "bundler-audit"
 gem "rubocop"
+gem "brakeman"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
