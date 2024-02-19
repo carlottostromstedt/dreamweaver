@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class DreamsController < ApplicationController
-  before_action :set_dream, only: %i[ show edit update destroy ]
+  before_action :set_dream, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   # GET /dreams or /dreams.json
@@ -10,7 +12,7 @@ class DreamsController < ApplicationController
   # GET /dreams/1 or /dreams/1.json
   def show
     id = params[:id]
-    @dream = Dream.where(id: id).first
+    @dream = Dream.where(id:).first
     @split_story = JSON.parse(@dream.story)
     @dalle_url = JSON.parse(@dream.links)[0]
     @dalle_urls = JSON.parse(@dream.links)
@@ -22,8 +24,7 @@ class DreamsController < ApplicationController
   end
 
   # GET /dreams/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /dreams or /dreams.json
   def create
@@ -31,7 +32,7 @@ class DreamsController < ApplicationController
 
     respond_to do |format|
       if @dream.save
-        format.html { redirect_to dream_url(@dream), notice: "Dream was successfully created." }
+        format.html { redirect_to dream_url(@dream), notice: 'Dream was successfully created.' }
         format.json { render :show, status: :created, location: @dream }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +45,7 @@ class DreamsController < ApplicationController
   def update
     respond_to do |format|
       if @dream.update(dream_params)
-        format.html { redirect_to dream_url(@dream), notice: "Dream was successfully updated." }
+        format.html { redirect_to dream_url(@dream), notice: 'Dream was successfully updated.' }
         format.json { render :show, status: :ok, location: @dream }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,19 +59,20 @@ class DreamsController < ApplicationController
     @dream.destroy
 
     respond_to do |format|
-      format.html { redirect_to dreams_url, notice: "Dream was successfully destroyed." }
+      format.html { redirect_to dreams_url, notice: 'Dream was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dream
-      @dream = Dream.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def dream_params
-      params.require(:dream).permit(:story)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_dream
+    @dream = Dream.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def dream_params
+    params.require(:dream).permit(:story)
+  end
 end
