@@ -49,6 +49,10 @@ gem "pg"
 # for environment variables
 gem "dotenv"
 
+# linting
+gem "bundler-audit"
+gem "rubocop"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
