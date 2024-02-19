@@ -99,6 +99,6 @@ end
 
 gem "devise", "~> 4.9"
 
-gem "activeadmin", "~> 2.14"
+gem 'activeadmin', '~> 3.2'
 
 gem "sass-rails", "~> 6.0"
