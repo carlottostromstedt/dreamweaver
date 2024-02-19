@@ -46,6 +46,9 @@ gem "ruby-openai"
 # postgres gem
 gem "pg"
 
+# for environment variables
+gem "dotenv"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

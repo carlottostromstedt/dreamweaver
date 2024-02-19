@@ -38,6 +38,9 @@
 
 /db/seeds.rb
 
+# Environment variables
+.env
+
 
 
 /app/assets/builds/*

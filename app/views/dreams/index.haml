@@ -13,6 +13,6 @@
               - unless i.title.nil?
                 = i.title
             .card-body.dream-body
-              - unless i.links.nil?
+              - if i.links.nil?
                 %img.card-picture#test{alt: "dalle pic", src: "#{JSON.parse(i.links)[0]}"}/
               = button_to "redream this", dream_path(i.id), method: :get, class: "btn btn-primary my-3 dream-buttons"
