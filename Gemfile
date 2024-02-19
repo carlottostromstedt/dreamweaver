@@ -43,6 +43,9 @@ gem "azure-storage-blob", "~> 2.0", require: false
 
 gem "ruby-openai"
 
+# postgres gem
+gem "pg"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
